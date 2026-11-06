@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Islands of the Philippines</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#eef8f7;
+    color:#173f46;
+}
+
+/* NAVIGATION */
+
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:18px 7%;
+
+    background:rgba(0,45,55,.92);
+    backdrop-filter:blur(10px);
+
+    color:white;
+}
+
+.logo{
+    font-size:25px;
+    font-weight:bold;
+}
+
+.logo span{
+    color:#55e6d1;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:25px;
+    font-weight:bold;
+}
+
+nav a:hover{
+    color:#55e6d1;
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+
+    background:
+    linear-gradient(
+        rgba(0,35,45,.45),
+        rgba(0,35,45,.65)
+    ),
+    url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Tropical_lagoon_in_Bacuit_Bay,_El_Nido,_Palawan,_Philippines.jpg");
+
+    background-size:cover;
+    background-position:center;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+    color:white;
+
+    padding:30px;
+}
+
+.hero-content{
+    max-width:900px;
+}
+
+.hero h1{
+    font-size:clamp(45px,8vw,90px);
+    text-shadow:0 5px 20px rgba(0,0,0,.5);
+}
+
+.hero p{
+    font-size:20px;
+    margin:20px auto;
+    line-height:1.7;
+}
+
+.button{
+    display:inline-block;
+    padding:15px 30px;
+    background:#55e6d1;
+    color:#063b42;
+    border-radius:30px;
+    text-decoration:none;
+    font-weight:bold;
+    margin-top:10px;
+    transition:.3s;
+}
+
+.button:hover{
+    transform:translateY(-5px);
+    background:white;
+}
+
+/* INTRO */
+
+.intro{
+    padding:80px 8%;
+    text-align:center;
+}
+
+.intro h2{
+    font-size:40px;
+    margin-bottom:20px;
+}
+
+.intro p{
+    max-width:800px;
+    margin:auto;
+    line-height:1.8;
+    color:#507177;
+}
+
+/* SEARCH */
+
+.controls{
+    padding:20px 8%;
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
+    justify-content:center;
+}
+
+input,
+select{
+    padding:14px 20px;
+    border:2px solid #b7dfdb;
+    border-radius:30px;
+    outline:none;
+    font-size:15px;
+}
+
+input{
+    width:min(400px,90%);
+}
+
+/* ISLAND GRID */
+
+.container{
+    width:86%;
+    max-width:1400px;
+    margin:auto;
+}
+
+.islands{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:28px;
+    padding:40px 0 100px;
+}
+
+/* CARD */
+
+.card{
+    background:white;
+    border-radius:25px;
+    overflow:hidden;
+
+    box-shadow:
+        0 10px 30px rgba(0,70,80,.12);
+
+    transition:.4s;
+
+    position:relative;
+}
+
+.card:hover{
+    transform:translateY(-12px);
+    box-shadow:
+        0 20px 45px rgba(0,70,80,.22);
+}
+
+.card img{
+    width:100%;
+    height:230px;
+    object-fit:cover;
+    display:block;
+    transition:.5s;
+}
+
+.card:hover img{
+    transform:scale(1.08);
+}
+
+.image-box{
+    overflow:hidden;
+    position:relative;
+}
+
+.region{
+    position:absolute;
+    top:15px;
+    left:15px;
+
+    background:rgba(0,40,50,.8);
+    color:white;
+
+    padding:8px 13px;
+    border-radius:20px;
+
+    font-size:12px;
+    font-weight:bold;
+}
+
+.card-content{
+    padding:22px;
+}
+
+.card h3{
+    font-size:24px;
+    margin-bottom:8px;
+}
+
+.location{
+    color:#17a89c;
+    font-weight:bold;
+    margin-bottom:12px;
+}
+
+.card p{
+    color:#657b80;
+    line-height:1.6;
+}
+
+.explore{
+    display:inline-block;
+    margin-top:18px;
+
+    text-decoration:none;
+    color:#087d79;
+
+    font-weight:bold;
+}
+
+/* FEATURE */
+
+.feature{
+    width:86%;
+    max-width:1200px;
+    margin:0 auto 100px;
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+
+    background:#073e46;
+    color:white;
+
+    border-radius:30px;
+    overflow:hidden;
+
+    box-shadow:0 20px 50px rgba(0,50,60,.25);
+}
+
+.feature img{
+    width:100%;
+    height:100%;
+    min-height:400px;
+    object-fit:cover;
+}
+
+.feature-text{
+    padding:50px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.feature-text h2{
+    font-size:42px;
+    margin-bottom:20px;
+}
+
+.feature-text p{
+    line-height:1.8;
+    color:#d3eeee;
+}
+
+/* FACTS */
+
+.facts{
+    padding:90px 8%;
+    background:#dff4f1;
+    text-align:center;
+}
+
+.facts h2{
+    font-size:40px;
+    margin-bottom:40px;
+}
+
+.fact-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:20px;
+    max-width:1000px;
+    margin:auto;
+}
+
+.fact{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+}
+
+.fact strong{
+    display:block;
+    font-size:35px;
+    color:#0a9188;
+}
+
+.fact span{
+    color:#5e7478;
+}
+
+/* FOOTER */
+
+footer{
+    background:#002d36;
+    color:white;
+    text-align:center;
+    padding:40px 20px;
+}
+
+footer p{
+    margin:8px;
+}
+
+footer span{
+    color:#55e6d1;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+    nav{
+        padding:15px 5%;
+    }
+
+    nav a{
+        display:none;
+    }
+
+    .hero{
+        min-height:90vh;
+    }
+
+    .hero p{
+        font-size:16px;
+    }
+
+    .feature{
+        grid-template-columns:1fr;
+    }
+
+    .feature img{
+        min-height:300px;
+    }
+
+    .feature-text{
+        padding:35px;
+    }
+
+    .feature-text h2{
+        font-size:32px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<nav>
+
+<div class="logo">
+PH<span>IL</span>IPPINES
+</div>
+
+<div>
+<a href="#home">Home</a>
+<a href="#islands">Islands</a>
+<a href="#facts">Facts</a>
+</div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+<div class="hero-content">
+
+<h1>ISLANDS OF THE PHILIPPINES</h1>
+
+<p>
+Discover breathtaking beaches, crystal-clear waters,
+beautiful mountains, waterfalls, and unforgettable places
+across the Philippine islands.
+</p>
+
+<a href="#islands" class="button">
+Explore the Islands ↓
+</a>
+
+</div>
+
+</section>
+
+
+<!-- INTRO -->
+
+<section class="intro">
+
+<h2>A Country of Islands 🌊</h2>
+
+<p>
+The Philippines is an island country filled with thousands
+of beautiful islands. Each destination has its own scenery,
+culture, food, traditions, and adventures. From the turquoise
+waters of Palawan to the rolling hills of Batanes, there is
+always something beautiful to discover.
+</p>
+
+</section>
+
+
+<!-- SEARCH -->
+
+<div class="controls">
+
+<input
+type="text"
+id="search"
+placeholder="🔎 Search an island or destination..."
+>
+
+<select id="region">
+
+<option value="all">All Regions</option>
+<option value="luzon">Luzon</option>
+<option value="visayas">Visayas</option>
+<option value="mindanao">Mindanao</option>
+
+</select>
+
+</div>
+
+
+<!-- ISLANDS -->
+
+<main class="container">
+
+<div class="islands" id="islands">
+
+
+<!-- EL NIDO -->
+
+<div class="card"
+data-region="luzon"
+data-name="El Nido Palawan">
+
+<div class="image-box">
+
+<img
+src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Tropical_lagoon_in_Bacuit_Bay,_El_Nido,_Palawan,_Philippines.jpg"
+alt="El Nido Palawan">
+
+<span class="region">LUZON</span>
+
+</div>
+
+<div class="card-content">
+
+<h3>El Nido</h3>
+
+<div class="location">📍 Palawan</div>
+
+<p>
+Famous for its dramatic limestone cliffs,
+blue lagoons, hidden beaches, and beautiful
+Bacuit Bay.
+</p>
+
+<a class="explore"
+href="https://en.wikipedia.org/wiki/El_Nido,_Palawan"
+target="_blank">
+Explore El Nido →
+</a>
+
+</div>
+</div>
+
+
+<!-- BORACAY -->
+
+<div class="card"
+data-region="visayas"
+data-name="Boracay White Beach">
+
+<div class="image-box">
+
+<img
+src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Boracay_White_Beach.jpg"
+alt="Boracay White Beach">
+
+<span class="region">VISAYAS</span>
+
+</div>
+
+<div class="card-content">
+
+<h3>Boracay</h3>
+
+<div class="location">📍 Aklan</div>
+
+<p>
+Known for its famous White Beach, powdery sand,
+clear water, and beautiful sunsets.
+</p>
+
+<a class="explore"
+href="https://en.wikipedia.org/wiki/Boracay"
+target="_blank">
+Explore Boracay →
+</a>
+
+</div>
+</div>
+
+
+<!-- BOHOL -->
+
+<div class="card"
+data-region="visayas"
+data-name="Bohol Chocolate Hills">
+
+<div class="image-box">
+
+<img
+src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Chocolate_Hills-bohol.jpg"
+alt="Chocolate Hills Bohol">
+
+<span class="region">VISAYAS</span>
+
+</div>
+
+<div class="card-content">
+
+<h3>Bohol</h3>
+
+<div class="location">📍 Central Visayas</div>
+
+<p>
+Home of the world-famous Chocolate Hills,
+beautiful beaches, rivers, and unique wildlife.
+</p>
+
+<a class="explore"
+href="https://en.wikipedia.org/wiki/Chocolate_Hills"
+target="_blank">
+Explore Bohol →
+</a>
+
+</div>
+</div>
+
+
+<!-- CEBU -->
+
+<div class="card"
+data-region="visayas"
+data-name="Cebu Kawasan Falls">
+
+<div class="image-box">
+
+<img
+src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Kawasan_Falls_Cebu.jpg"
+alt="Kawasan Falls Cebu">
+
+<span class="region">VISAYAS</span>
+
+</div>
+
+<div class="card-content">
+
+<h3>Cebu</h3>
+
+<div class="location">📍 Cebu</div>
+
+<p>
+A famous island province known for beaches,
+historical sites, mountain scenery, and Kawasan Falls.
+</p>
+
+<a class="explore"
+href="https://en.wikipedia.org/wiki/Cebu"
+target="_blank">
+Explore Cebu →
+</a>
+
+</div>
+</div>
+
+
+<!-- SIARGAO -->
+
+<div class="card"
+data-region="mindanao"
+data-name="Siargao Cloud 9">
+
+<div class="image-box">
+
+<img
+src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Siargao_Cloud_9.jpg"
+alt="Cloud 9 Siargao">
+
+<span class="region">MINDANAO</span>
+
+</div>
+
+<div class="card-content">
+
+<h3>Siargao</h3>
+
+<div class="location">📍 Surigao del Norte</div>
+
+<p>
+The famous surfing destination known for Cloud 9,
+palm trees, lagoons, and island adventures.
+</p>
+
+<a class="explore"
+href="https://en.wikipedia.org/wiki/Siargao"
+target="_blank">
+Explore Siargao →
+</a>
+
+</div>
+</div>
+
+
+<!-- CAMIGUIN -->
+
+<div class="card"
+data-region="mindanao"
+data-name="Camiguin White Island">
+
+<div class="image-box">
+
+<img
+src="https://commons.wikimedia.org/wiki/Special:Redirect/file/The_White_Island_of_Camiguin.jpg"
+alt="White Island Camiguin">
+
+<span class="region">MINDANAO</span>
+
+</div>
+
+<div class="card-content">
+
+<h3>Camiguin</h3>
+
+<div class="location">📍 Northern Mindanao</div>
+
+<p>
+Known for White Island, volcanic landscapes,
+hot and cold springs, and waterfalls.
+</p>
+
+<a class="explore"
+href="https://en.wikipedia.org/wiki/Camiguin"
+target="_blank">
+Explore Camiguin →
+</a>
+
+</div>
+</div>
+
+
+<!-- BATANES -->
+
+<div class="card"
+data-region="luzon"
+data-name="Batanes Vayang Rolling Hills">
+
+<div class="image-box">
+
+<img
+src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Vayang_Rolling_Hills,_Batanes,_Philippines.jpg"
+alt="Vayang Rolling Hills Batanes">
+
+<span class="region">LUZON</span>
+
+</div>
+
+<div class="card-content">
+
+<h3>Batanes</h3>
+
+<div class="location">📍 Northern Philippines</div>
+
+<p>
+Known for breathtaking rolling hills,
+stone houses, dramatic coastlines, and peaceful scenery.
+</p>
+
+<a class="explore"
+href="https://en.wikipedia.org/wiki/Batanes"
+target="_blank">
+Explore Batanes →
+</a>
+
+</div>
+</div>
+
+
+<!-- KALANGGAMAN -->
+
+<div class="card"
+data-region="visayas"
+data-name="Kalanggaman Island">
+
+<div class="image-box">
+
+<img
+src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Kalanggaman_Island.jpg"
+alt="Kalanggaman Island">
+
+<span class="region">VISAYAS</span>
+
+</div>
+
+<div class="card-content">
+
+<h3>Kalanggaman</h3>
+
+<div class="location">📍 Leyte</div>
+
+<p>
+Famous for its long, beautiful sandbar surrounded
+by clear blue water.
+</p>
+
+<a class="explore"
+href="https://en.wikipedia.org/wiki/Kalanggaman_Island"
+target="_blank">
+Explore Kalanggaman →
+</a>
+
+</div>
+</div>
+
+
+<!-- SIQUIJOR -->
+
+<div class="card"
+data-region="visayas"
+data-name="Siquijor Cambugahay Falls">
+
+<div class="image-box">
+
+<img
+src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Cambugahay_falls.jpg"
+alt="Cambugahay Falls Siquijor">
+
+<span class="region">VISAYAS</span>
+
+</div>
+
+<div class="card-content">
+
+<h3>Siquijor</h3>
+
+<div class="location">📍 Central Visayas</div>
+
+<p>
+A peaceful island famous for Cambugahay Falls,
+beaches, forests, and beautiful natural scenery.
+</p>
+
+<a class="explore"
+href="https://en.wikipedia.org/wiki/Siquijor"
+target="_blank">
+Explore Siquijor →
+</a>
+
+</div>
+</div>
+
+
+<!-- BANTAYAN -->
+
+<div class="card"
+data-region="visayas"
+data-name="Bantayan Island">
+
+<div class="image-box">
+
+<img
+src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Beach_in_Bantayan_Island.jpg"
+alt="Bantayan Island beach">
+
+<span class="region">VISAYAS</span>
+
+</div>
+
+<div class="card-content">
+
+<h3>Bantayan</h3>
+
+<div class="location">📍 Cebu</div>
+
+<p>
+A relaxing island destination famous for its beaches,
+clear waters, and peaceful coastal atmosphere.
+</p>
+
+<a class="explore"
+href="https://en.wikipedia.org/wiki/Bantayan_Island"
+target="_blank">
+Explore Bantayan →
+</a>
+
+</div>
+</div>
+
+
+<!-- CORON -->
+
+<div class="card"
+data-region="luzon"
+data-name="Coron Kayangan Lake">
+
+<div class="image-box">
+
+<img
+src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Kayangan_Lake_in_Coron,_Palawan.jpg"
+alt="Kayangan Lake Coron">
+
+<span class="region">LUZON</span>
+
+</div>
+
+<div class="card-content">
+
+<h3>Coron</h3>
+
+<div class="location">📍 Palawan</div>
+
+<p>
+Known for limestone formations, clear lakes,
+coral reefs, and unforgettable island scenery.
+</p>
+
+<a class="explore"
+href="https://en.wikipedia.org/wiki/Coron,_Palawan"
+target="_blank">
+Explore Coron →
+</a>
+
+</div>
+</div>
+
+
+</div>
+
+</main>
+
+
+<!-- FEATURE -->
+
+<section class="feature">
+
+<img
+src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Tropical_lagoon_in_Bacuit_Bay,_El_Nido,_Palawan,_Philippines.jpg"
+alt="El Nido Palawan">
+
+<div class="feature-text">
+
+<h2>Where the Sea Meets Paradise</h2>
+
+<p>
+The Philippine islands offer incredible natural beauty.
+Every island has its own character—from peaceful beaches
+and colorful coral reefs to mountains, waterfalls,
+rolling hills, and hidden lagoons.
+</p>
+
+<br>
+
+<p>
+Explore responsibly, respect local communities,
+and help keep these beautiful places clean for
+future generations.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- FACTS -->
+
+<section class="facts" id="facts">
+
+<h2>Philippines Island Facts</h2>
+
+<div class="fact-grid">
+
+<div class="fact">
+<strong>7,641</strong>
+<span>Islands</span>
+</div>
+
+<div class="fact">
+<strong>3</strong>
+<span>Main Island Groups</span>
+</div>
+
+<div class="fact">
+<strong>17</strong>
+<span>Regions</span>
+</div>
+
+<div class="fact">
+<strong>7,000+</strong>
+<span>Reasons to Explore</span>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<p>
+🌊 <span>ISLANDS OF THE PHILIPPINES</span>
+</p>
+
+<p>
+A student-made website celebrating the beauty
+of the Philippine islands.
+</p>
+
+<p>
+© 2026 Philippine Islands
+</p>
+
+</footer>
+
+
+<script>
+
+/* SEARCH */
+
+const search = document.getElementById("search");
+const region = document.getElementById("region");
+const cards = document.querySelectorAll(".card");
+
+
+function filterCards(){
+
+    const searchText =
+        search.value.toLowerCase();
+
+    const selectedRegion =
+        region.value;
+
+    cards.forEach(card => {
+
+        const name =
+            card.dataset.name.toLowerCase();
+
+        const cardRegion =
+            card.dataset.region;
+
+        const matchesSearch =
+            name.includes(searchText);
+
+        const matchesRegion =
+            selectedRegion === "all" ||
+            cardRegion === selectedRegion;
+
+        if(matchesSearch && matchesRegion){
+
+            card.style.display = "block";
+
+        }else{
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+}
+
+
+search.addEventListener(
+    "input",
+    filterCards
+);
+
+region.addEventListener(
+    "change",
+    filterCards
+);
+
+</script>
+
+</body>
+</html>
